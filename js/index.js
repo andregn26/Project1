@@ -43,11 +43,46 @@ function workingBoat() {
     currentGame.boat.draw();
 }
 
+function detectCollision(obstacle) {
+    return !(
+      currentGame.boat.x > obstacle.x + obstacle.width ||
+      currentGame.boat.x + currentGame.boat.width < obstacle.x ||
+      currentGame.boat.y > obstacle.y + obstacle.height
+    );
+  }
+
 function createObstacle() {
-    let random = Math.floor(Math.random() * width);
-    let newObstacle = new Obstacle(random, 10, 30, 150, "red");
-    obstacles.push(newObstacle);
-    currentGame.obstacles.drawObstacle()
+    currentGame.obstaclesFrequency ++
+    if (currentGame.obstaclesFrequency % 150 === 1) {
+        
+        const randomObstacleX = Math.floor(Math.random() * 700);  
+        const randomObstacleY = 0;
+        const randomObstacleWidth = Math.floor(Math.random() * 50) + 20;
+        const randomObstacleHeight = Math.floor(Math.random() * 50) + 20;
+
+        const newObstacle = new Obstacle(
+            randomObstacleX,
+            randomObstacleY,
+            randomObstacleWidth,
+            randomObstacleHeight
+        );
+        currentGame.obstacles.push(newObstacle);
+    }
+    currentGame.obstacles.forEach((obstacle) => {
+        obstacle.y += 1;
+        obstacle.drawObstacle();
+
+        if (detectCollision(obstacle)) {
+            currentGame.gameOver = true;
+            currentGame.obstaclesFrequency = 0;
+            currentGame.score = 0;
+            currentGame.obstacles = [];
+            // document.getElementById("score").innerHTML = 0;
+            document.getElementById("game-board").style.display = "none";
+            cancelAnimationFrame(currentGame.animationId);
+            alert("AAAA");
+        }
+    })
 }
 
 function updateCanvas() {
