@@ -7,9 +7,12 @@ const width = canvas.width;
 const height = canvas.height;
 
 document.getElementById("game-board").style.display = "none";
+document.getElementById("scoreDiv").style.display = "none";
 
 document.getElementById("start-button").onclick = () => {
     document.getElementById("game-board").style.display = "block";
+    document.getElementById("scoreDiv").style.display = "block";
+    document.getElementById("start-button").style.display = "none";
     startGame();
 };
 
@@ -34,12 +37,12 @@ function startGame() {
     updateCanvas();
 };  
 
-function workingBackground() {
+function drawBackground() {
     currentGame.background.drawBackground();
     currentGame.background.moveBackground();
 }
 
-function workingBoat() {
+function drawBoat() {
     currentGame.boat.draw();
 }
 
@@ -47,55 +50,87 @@ function detectCollision(obstacle) {
     return !(
       currentGame.boat.x > obstacle.x + obstacle.width ||
       currentGame.boat.x + currentGame.boat.width < obstacle.x ||
-      currentGame.boat.y > obstacle.y + obstacle.height
+      currentGame.boat.y > obstacle.y + obstacle.height ||
+      currentGame.boat.y + currentGame.boat.height < obstacle.y
     );
   }
 
-function createObstacle() {
-    currentGame.obstaclesFrequency ++
-    if (currentGame.obstaclesFrequency % 150 === 1) {
-        
-        const randomObstacleX = Math.floor(Math.random() * 700);  
-        const randomObstacleY = 0;
-        const randomObstacleWidth = Math.floor(Math.random() * 50) + 20;
-        const randomObstacleHeight = Math.floor(Math.random() * 50) + 20;
+function createObstacle(type) {
+   
+    const randomObstacleX = Math.floor(Math.random() * 750);  
+    const randomObstacleY = 0;
+    const ObstacleWidth = 50;
+    const ObstacleHeight =50;
 
-        const newObstacle = new Obstacle(
-            randomObstacleX,
-            randomObstacleY,
-            randomObstacleWidth,
-            randomObstacleHeight
-        );
+    const newObstacle = new Obstacle(
+        randomObstacleX,
+        randomObstacleY,
+        ObstacleWidth, //add the width of the obstacle image//
+        ObstacleHeight, //add the height of the obstacle image//
+        type
+    );
+
         currentGame.obstacles.push(newObstacle);
-    }
-    currentGame.obstacles.forEach((obstacle) => {
-        obstacle.y += 1;
-        obstacle.drawObstacle();
-
-        if (detectCollision(obstacle)) {
-            currentGame.gameOver = true;
-            currentGame.obstaclesFrequency = 0;
-            currentGame.score = 0;
-            currentGame.obstacles = [];
-            // document.getElementById("score").innerHTML = 0;
-            document.getElementById("game-board").style.display = "none";
-            cancelAnimationFrame(currentGame.animationId);
-            alert("AAAA");
-        }
-    })
 }
+
+//create function gameOver
+function gameOver(){
+    currentGame.gameOver = true;
+    currentGame.obstaclesFrequency = 0;
+    currentGame.score = 0;
+    currentGame.obstacles = [];
+    // document.getElementById("score").innerHTML = 0;
+    document.getElementById("game-board").style.display = "none";
+    cancelAnimationFrame(currentGame.animationId);
+    alert("AAAA");
+}
+    
+
 
 function updateCanvas() {
     
     context.clearRect(0, 0, width, height);
-    workingBackground()
-    workingBoat()
-    createObstacle()
-    // currentGame.background.drawBackground();
-    // currentGame.background.moveBackground();
-   
+    drawBackground();
+    drawBoat();
+
+    currentGame.obstaclesFrequency++;
+
+     //Good obstacles
+    if (currentGame.obstaclesFrequency % 150 === 1) {
+        createObstacle("good");
+    }
+
+    //Bad obstacles
+    if (currentGame.obstaclesFrequency % 200 === 1){
+        createObstacle("bad");
+    }
+
+    currentGame.obstacles.forEach((obstacle) => {
+        obstacle.y += 1;
+        obstacle.drawObstacle();
+
+        
+
+        if (detectCollision(obstacle)) {
+
+            if(obstacle.type === "good"){
+                //TODO Logic for good obstacles
+                //increase score
+
+
+            }
+
+            if(obstacle.type === "bad"){
+                //TODO Logic for good obstacles
+               gameOver();
+            }
+           
+        }
+    })
     requestAnimationFrame(updateCanvas);
 }
+   
+
 
 
 

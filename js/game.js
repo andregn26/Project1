@@ -8,6 +8,8 @@ class Game {
         this.obstacles = [];
         this.obstaclesFrequency = 0;
         this.animationId = null;
+        this.score = 0;
+        this.gameOver = false;
         
     }
   }

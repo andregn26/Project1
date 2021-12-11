@@ -3,9 +3,12 @@ body {
   text-align: center;
 }
 
-.game-intro {
-  float: left;
-  padding: 0% 10%;
+.col {
+  /* float: center; */
+  border: 5px solid green;
+  padding: 20px, 0px;
+  margin: auto;
+
 }
 
 .game-intro p {

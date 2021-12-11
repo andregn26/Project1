@@ -15,19 +15,19 @@ class Boat {
     }
 
     moveLeft(){
-        this.x -= 30;
+        this.x -= 10;
     }
 
     moveRight(){
-        this.x += 30;
+        this.x += 10;
     }
 
     moveDown(){
-        this.y += 30;
+        this.y += 10;
     }
 
     moveUp(){
-        this.y -= 30;
+        this.y -= 10;
     }
 
     moveBoat(key){
