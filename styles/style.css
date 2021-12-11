@@ -1,6 +1,9 @@
 body {
   padding: 0;
   text-align: center;
+  background-image: url("../images/Golden_Gate_Bright-[Converted].png");
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .col {
@@ -8,35 +11,25 @@ body {
   border: 5px solid green;
   padding: 20px, 0px;
   margin: auto;
+  max-width: 100%;
 
 }
 
-.game-intro p {
-  font-size: 18px;
-  font-family: "Verdana"
-}
-
-.logo-img {
-  width: 350px;
-}
-
-.arrows-img {
-  width: 150px;
-}
 
 body button {
   font-size: 30px;
-  background-color: #870007;
+  background-color: navy;
   color: #fff;
   padding: 20px 40px;
   border: 0;
   box-shadow: 0;
   border-radius: 5px;
+  margin-top: 100px;
   margin-bottom: 20px;
 }
 
 #game-board {
-    float: left;
+    float: center;
     padding: 20px 0px;
 }
 
@@ -46,4 +39,12 @@ body button {
 
 .container {
   border: 5px solid red;
+}
+
+#instructions {
+  border: 5px solid blue;
+}
+
+#captain {
+  max-width: 50%;
 }

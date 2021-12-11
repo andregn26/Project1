@@ -1,7 +1,7 @@
 class Background {
     constructor () {
         this.image = new Image();
-        this.image.src = "./images/Unt.png";
+        this.image.src = "./images/back.png";
         this.y = 0;
         // this.y = 0;
         // this.width = 700;

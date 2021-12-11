@@ -14,18 +14,22 @@
     
     <div class="container">
         <div class="row">
-          <div class="col">
+          <div class="col" id="instructions">
+            <div>
+              <p>Hey Sailor! The arrow keys on your keyboard are the rudder of our ship. Hold on to them!</p>
+            </div>
             
-            <p>Hey Sailor! The arrow keys on your keyboard are the rudder of our ship. Hold on to them!</p>
-            <button id="start-button">StartGame</button>
-            <div id="scoreDiv">Score: <span id="score">0</span></div>
+            <button id="start-button">Get On Board!</button>
+            
           </div>
+          <div id="scoreDiv">Score: <span id="score">0</span></div>
           <div class="col-7">    
             <div id="game-board">
             <canvas id="canvas" width="750" height="600"></canvas>
           </div>
         </div>
     </div>
+  </div>
 
     <script type="text/javascript" src="./js/background.js" ></script>
     <script type="text/javascript" src="./js/boat.js" ></script>

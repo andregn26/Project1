@@ -10,7 +10,7 @@ class Boat {
     } 
     draw(){
         const img = new Image();
-        img.src = "./images/car.png";
+        img.src = "./images/boat.png";
         context.drawImage(img, this.x, this.y, this.width, this.height);
     }
 
@@ -35,13 +35,13 @@ class Boat {
         context.clearRect(this.x, this.y, this.width, this.height);
         switch(key){
             case "ArrowLeft":
-                if (this.x > 0+this.width) {
+                if (this.x > 50+this.width) {
                     this.moveLeft()
                     
                 }
             break
             case "ArrowRight":
-                if(this.x < width-this.width) {
+                if(this.x < width-50-this.width*2) {
                     this.moveRight()
                 }
             break
