@@ -11,13 +11,17 @@ class Obstacle {
   
     drawObstacle() {
       if(this.type === "bad") {
-        context.fillStyle = "orange";
+        const img = new Image() 
+        img.src = "./images/obstacle.png";
+        context.drawImage(img, this.x, this.y, this.width, this.height);
        
       } else if(this.type === "good") {
-        context.fillStyle = "green";
+        const img = new Image() 
+        img.src = "./images/fish.png";
+        context.drawImage(img, this.x, this.y, this.width, this.height);
         
       }
-      context.fillRect(this.x, this.y, this.width, this.height);
+      // context.fillRect(this.x, this.y, this.width, this.height);
     }
   }
 

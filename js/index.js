@@ -6,14 +6,14 @@ const context = canvas.getContext('2d');
 const width = canvas.width;
 const height = canvas.height;
 
-document.getElementById("game-board").style.display = "none";
+document.getElementById("canvas").style.display = "none";
 document.getElementById("scoreDiv").style.display = "none";
 
 document.getElementById("start-button").onclick = () => {
-    document.getElementById("game-board").style.display = "block";
+    document.getElementById("canvas").style.display = "block";
     document.getElementById("scoreDiv").style.display = "block";
     // document.getElementById("start-button").style.display = "none";
-    document.getElementById("instructions").style.display = "none";
+    document.getElementById("box").style.display = "none";
     startGame();
 };
 
@@ -84,12 +84,12 @@ function createObstacle(type) {
 function gameOver(){
     currentGame.gameOver = true;
     currentGame.obstaclesFrequency = 0;
-    currentGame.score = 0;
     currentGame.obstacles = [];
-    document.getElementById("score").innerHTML = 0;
-    document.getElementById("game-board").style.display = "none";
+    document.getElementById("score").innerHTML = currentGame.score;
+    document.getElementById("canvas").style.display = "none";
+    document.getElementById("body").style.backgroundImage = "url('../images/4064.jpg')";
+    document.getElementById("scoreDiv").setAttribute('id', 'scoreDivAfter')
     cancelAnimationFrame(currentGame.animationId);
-    document.getElementById("start-button").style.display = "block";
     alert("AAAA");
        
 }
@@ -137,7 +137,7 @@ function updateCanvas() {
             }          
         }
     })
-    requestAnimationFrame(updateCanvas);
+    currentGame.animationId= requestAnimationFrame(updateCanvas);
 }
    
 
