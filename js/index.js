@@ -8,6 +8,7 @@ const height = canvas.height;
 
 document.getElementById("canvas").style.display = "none";
 document.getElementById("scoreDiv").style.display = "none";
+document.getElementById("reset-button").style.display = "none";
 
 document.getElementById("start-button").onclick = () => {
     document.getElementById("canvas").style.display = "block";
@@ -17,6 +18,9 @@ document.getElementById("start-button").onclick = () => {
     startGame();
 };
 
+document.getElementById("reset-button").onclick = () => {
+    location.reload();
+};
 
 let currentGame;
 
@@ -79,6 +83,11 @@ function createObstacle(type) {
 }
 
 
+// function resetButton() {
+//   let get = document.getElementById("reset-button")
+//   get.classList.add("")
+//   return get
+// }
 
 //create function gameOver
 function gameOver(){
@@ -88,9 +97,14 @@ function gameOver(){
     document.getElementById("score").innerHTML = currentGame.score;
     document.getElementById("canvas").style.display = "none";
     document.getElementById("body").style.backgroundImage = "url('../images/4064.jpg')";
-    document.getElementById("scoreDiv").setAttribute('id', 'scoreDivAfter')
-    cancelAnimationFrame(currentGame.animationId);
-    alert("AAAA");
+    document.getElementById("reset-button").style.display = "block";
+    // document.getElementById("scoreDiv").setAttribute('id', 'scoreDivAfter')
+    // let createDiv = document.createElement('div');
+    // let insertText = createDiv.innerHTML = '<h1>You sunk the ship!</h1>';
+    
+    
+    
+    // alert("AAAA");
        
 }
     
@@ -121,6 +135,7 @@ function updateCanvas() {
         if (detectCollision(obstacle)) {
 
             if(obstacle.type === "good"){
+                
                 //TODO Logic for good obstacles
                 //increase score
                 currentGame.score++;
@@ -131,13 +146,23 @@ function updateCanvas() {
             }
 
             if(obstacle.type === "bad"){
+                currentGame.gameOver = true;
                 //TODO Logic for good obstacles
-               gameOver(); 
+               
                            
             }          
         }
+
+       
     })
-    currentGame.animationId= requestAnimationFrame(updateCanvas);
+    
+    if (!currentGame.gameOver) {
+        currentGame.animationId= requestAnimationFrame(updateCanvas);
+    } else {
+        gameOver(); 
+        cancelAnimationFrame(currentGame.animationId);
+    }
+    
 }
    
 
