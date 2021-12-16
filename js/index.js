@@ -97,7 +97,7 @@ function gameOver(){
     document.getElementById("score").innerHTML = currentGame.score;
     document.getElementById("scoreDiv").style.display = "block";
     document.getElementById("canvas").style.display = "none";
-    document.getElementById("body").style.backgroundImage = "url('../images/4064.jpg')";
+    document.getElementById("body").style.backgroundImage = "url('./images/4064.jpg')";
     document.getElementById("reset-button").style.display = "block";
     document.getElementById("scoreDiv").style.position = "absolute";
     document.getElementById("scoreDiv").style.position = "absolute";
