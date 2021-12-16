@@ -95,9 +95,14 @@ function gameOver(){
     currentGame.obstaclesFrequency = 0;
     currentGame.obstacles = [];
     document.getElementById("score").innerHTML = currentGame.score;
+    document.getElementById("scoreDiv").style.display = "block";
     document.getElementById("canvas").style.display = "none";
     document.getElementById("body").style.backgroundImage = "url('../images/4064.jpg')";
     document.getElementById("reset-button").style.display = "block";
+    document.getElementById("scoreDiv").style.position = "absolute";
+    document.getElementById("scoreDiv").style.position = "absolute";
+    document.getElementById("finalMessage").style.display ="block";
+    // document.getElementById("scoreDiv").classList.add("finalScreen");
     // document.getElementById("scoreDiv").setAttribute('id', 'scoreDivAfter')
     // let createDiv = document.createElement('div');
     // let insertText = createDiv.innerHTML = '<h1>You sunk the ship!</h1>';
@@ -129,8 +134,17 @@ function updateCanvas() {
     }
 
     currentGame.obstacles.forEach((obstacle, index) => {
-        obstacle.y += 1;
-        obstacle.drawObstacle();        
+        if(obstacle.type === "good") {
+            obstacle.y += 1;
+            obstacle.drawObstacle(); 
+        } 
+        
+        if(obstacle.type === "bad") {
+          obstacle.y += 2;
+          obstacle.drawObstacle();   
+        }
+        
+               
 
         if (detectCollision(obstacle)) {
 
