@@ -72,7 +72,7 @@ h2 {
 
 }
 
-#scoreDiv {
+.scoreDiv {
   border: 5px solid blue;
     font-size: 30px;
     background-color: #870007;

@@ -101,7 +101,13 @@ function gameOver(){
     document.getElementById("reset-button").style.display = "block";
     document.getElementById("scoreDiv").style.position = "absolute";
     document.getElementById("scoreDiv").style.position = "absolute";
+    document.getElementById("scoreDiv").textContent = currentGame.score;
     document.getElementById("finalMessage").style.display ="block";
+    // document.getElementById("scoreDiv").style.borderRadius ="50%"
+    // document.getElementById("scoreDiv").style.height ="100px"
+    // document.getElementById("scoreDiv").style.width ="100px"
+    // document.getElementById("scoreDiv").style.padding ="10px"
+    document.getElementById("scoreDiv").classList.remove("scoreDiv")
     // document.getElementById("scoreDiv").classList.add("finalScreen");
     // document.getElementById("scoreDiv").setAttribute('id', 'scoreDivAfter')
     // let createDiv = document.createElement('div');
