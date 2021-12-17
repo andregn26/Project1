@@ -55,10 +55,10 @@ function drawBoat() {
 
 function detectCollision(obstacle) {
     return !(
-      currentGame.boat.x > obstacle.x + obstacle.width ||
-      currentGame.boat.x + currentGame.boat.width < obstacle.x ||
-      currentGame.boat.y > obstacle.y + obstacle.height ||
-      currentGame.boat.y + currentGame.boat.height < obstacle.y
+      currentGame.boat.x >= obstacle.x + obstacle.width ||
+      currentGame.boat.x + currentGame.boat.width <= obstacle.x ||
+      currentGame.boat.y >= obstacle.y + obstacle.height ||
+      currentGame.boat.y + currentGame.boat.height <= obstacle.y
     );
   }
 
@@ -135,7 +135,7 @@ function updateCanvas() {
     }
 
     //Bad obstacles
-    if (currentGame.obstaclesFrequency % 150 === 1){
+    if (currentGame.obstaclesFrequency % 80 === 1){
         createObstacle("bad");
     }
 

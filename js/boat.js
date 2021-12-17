@@ -15,19 +15,19 @@ class Boat {
     }
 
     moveLeft(){
-        this.x -= 10;
+        this.x -= 20;
     }
 
     moveRight(){
-        this.x += 10;
+        this.x += 20;
     }
 
     moveDown(){
-        this.y += 10;
+        this.y += 20;
     }
 
     moveUp(){
-        this.y -= 10;
+        this.y -= 20;
     }
 
     moveBoat(key){
@@ -46,7 +46,7 @@ class Boat {
                 }
             break
             case "ArrowDown":
-                if(this.y < height+this.height) {
+                if(this.y < height-this.height) {
                     this.moveDown()
                 }  
             break
