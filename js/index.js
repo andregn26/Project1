@@ -94,20 +94,22 @@ function gameOver(){
     currentGame.gameOver = true;
     currentGame.obstaclesFrequency = 0;
     currentGame.obstacles = [];
-    document.getElementById("score").innerHTML = currentGame.score;
+    // document.getElementById("score").innerHTML = currentGame.score;
     document.getElementById("scoreDiv").style.display = "block";
     document.getElementById("canvas").style.display = "none";
-    document.getElementById("body").style.backgroundImage = "url('./images/4064.jpg')";
+    document.getElementById("body").style.backgroundImage = "url('./images/406.png')";
     document.getElementById("reset-button").style.display = "block";
     document.getElementById("scoreDiv").style.position = "absolute";
     document.getElementById("scoreDiv").style.position = "absolute";
-    document.getElementById("scoreDiv").textContent = currentGame.score;
+    document.getElementById("scoreDiv").textContent = currentGame.score + ' sardines';
     document.getElementById("finalMessage").style.display ="block";
     // document.getElementById("scoreDiv").style.borderRadius ="50%"
     // document.getElementById("scoreDiv").style.height ="100px"
     // document.getElementById("scoreDiv").style.width ="100px"
     // document.getElementById("scoreDiv").style.padding ="10px"
     document.getElementById("scoreDiv").classList.remove("scoreDiv")
+    document.getElementById("scoreDiv").classList.add("finalScore")
+    document.getElementById("finalMessage").classList.add("finalScreen")
     // document.getElementById("scoreDiv").classList.add("finalScreen");
     // document.getElementById("scoreDiv").setAttribute('id', 'scoreDivAfter')
     // let createDiv = document.createElement('div');
