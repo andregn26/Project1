@@ -1,5 +1,6 @@
 body {
   padding: 0;
+  min-height: 100%;
   text-align: center;
   background-image: url("../images/Golden_Gate_Bright-[Converted].png");
   background-repeat: no-repeat;
